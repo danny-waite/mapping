@@ -1,0 +1,13 @@
+{
+  "name": "mapping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build-map.js",
+  "scripts": {
+    "start": "browser-sync start --server --files '*/*','*'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
