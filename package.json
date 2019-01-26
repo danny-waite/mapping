@@ -5,9 +5,20 @@
   "main": "build-map.js",
   "scripts": {
     "start": "browser-sync start --server --files '*/*','*'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rebuild": "./rebuild.sh",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "rebuild": {
+      "patterns": ["inputs"],
+      "extensions": "txt"
+    }
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "npm-watch": "^0.6.0"
+  }
 }

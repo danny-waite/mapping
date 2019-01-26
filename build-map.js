@@ -8,13 +8,13 @@ const input = fs.readFileSync(inputPath, "utf8");
 
 let lastId = 0;
 let lastIndent = 0;
-// let base = 0;
 let elements = [];
 let links = [];
 let title = ""
 let parentIndex;
 
 let parents = [];
+let names = [];
 
 const lines = input.split("\n");
 const increment = (1 / lines.length).toFixed(3);
@@ -26,26 +26,36 @@ for (let line of lines) {
 
     const indent = line.match(/^\s{0,100}/)[0].length; // fix hard coded 100 limit
 
-    // if (indent !== lastIndent) { // changed levels
-    //     base = base + indent * 100;
-    //     lastId = 0;
-    // }
-
     if (indent > lastIndent) parents.push(elements.length - 1)
-    else if (indent < lastIndent) parents.pop()
+    else if (indent < lastIndent) {
+
+        const levels = (lastIndent - indent) / 2;
+        for (let i=0;i < levels; i++) {
+            parents.pop();
+        }
+    }
 
     parentIndex = parents[parents.length - 1];
-
     lastIndent = indent;
-
     lastId++;
+
+    const values = line.trim().split("/")
+
+    const name = values[0]
+        , visibility = values.length > 1 ? parseInt(values[1]) / 100 : currentIncrement
+        , maturity = values.length > 2 ? parseInt(values[2]) / 100 : currentIncrement
+        , level = parents.length
+        ;
+
+    if (names.includes(name)) throw new Error(`duplicate name ${name}`);
+    names.push(name);
 
     const element = {
         id: lastId,
-        name: line.trim(),
-        visibility: currentIncrement,
-        maturity: currentIncrement,
-        level: parents.length
+        name,
+        visibility,
+        maturity,
+        level
     };
 
     if (parentIndex > -1) {
