@@ -37,11 +37,12 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
 	var y = visToY(element.visibility, mapHeight);
+	var color = element.color || "black"
 
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
           '<circle cx="0" cy="0" r="5" stroke="black" fill="white" />' +
-          '<text x="10" y="-5" text-anchor="start">' +
+          '<text x="10" y="-5" text-anchor="start" fill="' + color + '">' +
           	element.name +
           '</text>  ' +
         '</g>';
