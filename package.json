@@ -11,7 +11,9 @@
   },
   "watch": {
     "rebuild": {
-      "patterns": ["inputs"],
+      "patterns": [
+        "inputs"
+      ],
       "extensions": "txt"
     }
   },

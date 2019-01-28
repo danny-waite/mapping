@@ -48,6 +48,8 @@ for (let line of lines) {
         ;
 
     if (names.includes(name)) throw new Error(`duplicate name ${name}`);
+    else if (name.startsWith("#")) continue; // commented
+
     names.push(name);
 
     const element = {
