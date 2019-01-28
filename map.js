@@ -135,3 +135,4 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 };
 
 document.getElementById("map").innerHTML=renderSvg(mapScript,1024,768);
+document.getElementById("title").innerHTML=mapScript.title
