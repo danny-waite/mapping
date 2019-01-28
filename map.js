@@ -14,8 +14,9 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 	var x2 = matToX(endElement.maturity, mapWidth);
 	var y1 = visToY(startElement.visibility, mapHeight);
 	var y2 = visToY(endElement.visibility, mapHeight);
+	var color = startElement.color || "black"
 
-	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="grey" />';
+	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="' + color + '" />';
 
 };
 

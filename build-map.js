@@ -44,6 +44,7 @@ for (let line of lines) {
     const name = values[0]
         , visibility = values.length > 1 ? parseInt(values[1]) / 100 : currentIncrement
         , maturity = values.length > 2 ? parseInt(values[2]) / 100 : currentIncrement
+        , color = values.length > 3 ? values[3] : "black"
         , level = parents.length
         ;
 
@@ -57,7 +58,8 @@ for (let line of lines) {
         name,
         visibility,
         maturity,
-        level
+        level,
+        color
     };
 
     if (parentIndex > -1) {
